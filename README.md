@@ -1,14 +1,14 @@
-# Intelligent Hangman Agent (HMM + DQN)
+`# Intelligent Hangman Agent (HMM + DQN)
 
 This project is an intelligent Hangman-solving agent built for the **UE23CS352A: Machine Learning Hackathon**. It uses a hybrid approach combining a **Hidden Markov Model (HMM)** for language "intuition" and a **Deep Q-Network (DQN)** for strategic decision-making to win games with maximum efficiency.
 
-## 🎯 The Challenge
+##  The Challenge
 
 The goal is to create an agent that can effectively guess letters to solve Hangman puzzles. The agent is evaluated by playing 2,000 games against a hidden test set.
 
 The final score is calculated using a formula that heavily penalizes mistakes:
 
-## 🧠 Core Architecture & Methodology
+## Core Architecture & Methodology
 
 This solution is a hybrid AI model, broken into two main phases as required by the challenge.
 
@@ -42,7 +42,7 @@ The agent's "brain" is a **Deep Q-Network (DQN)**, a Reinforcement Learning (RL)
     * **Target Network:** Uses a separate `target_net` for stable Q-value estimation.
     * **$\epsilon$-greedy Policy:** Balances **exploration** (random guesses to find new strategies) with **exploitation** (using the network's best guess).
 
-## ⚙️ Requirements
+##  Requirements
 
 This project is built as a single Jupyter/Kaggle notebook.
 * `python 3.x`
@@ -50,22 +50,8 @@ This project is built as a single Jupyter/Kaggle notebook.
 * `torch` (for the DQN)
 * `google.colab` (or standard `pathlib` for file management)
 
-## 🚀 How to Run
 
-The notebook (`ml_hackathon (1).ipynb`) is designed to be run from top to bottom.
 
-1.  **Cell 1-12: HMM Training**
-    * Run these cells first. This will load `corpus.txt`, perform the K-sweep, train the HMMs for each word length, and define the `get_hmm_prior` function. This is the "oracle."
-
-2.  **Cell 18-24: DQN Training**
-    * Run the environment definition (`HangmanEnv`), the agent classes (`DQNNet`, `DQNAgent`), and the main `train_dqn` loop.
-    * This is the longest step and will take considerable time (depending on the number of `episodes`).
-    * This will save the trained "brain" to a file named `dqn_hangman.pt`.
-
-3.  **Cell 26: Final Evaluation**
-    * This final cell loads the `test.txt` file and the saved `dqn_hangman.pt` model.
-    * It runs the agent in pure **exploitation mode (epsilon = 0)** for 2,000 games to get the official score.
-
-## 📈 Results
+##  Results
 
 The training script (cell 24) will output the agent's progress and save the best model. The final evaluation script (cell 26) will output the official score breakdown:
